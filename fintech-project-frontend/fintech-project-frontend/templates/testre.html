@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="Email">
+    <input type="text" id="PassWord">
+    <input type="text" id="C_PassWord">
+    <button id="REGISTER">
+        REGISTER
+    </button>
+
+
+    <script>
+
+// const navToggler = document.querySelector(".nav-toggler");
+//  navToggler.addEventListener("click", navToggle);
+
+//  function navToggle() {
+//     navToggler.classList.toggle("active");
+//     const nav = document.querySelector(".nav");
+//     nav.classList.toggle("open");
+//     if(nav.classList.contains("open")){
+//     	nav.style.maxHeight = nav.scrollHeight + "px";
+//     }
+//     else{
+//     	nav.removeAttribute("style");
+//     }
+//  } 
+
+
+
+//              //  展開/收合按鈕
+//              $(document).ready(function() {
+            
+//                $("#collapse").on("click", function() {
+           
+//                    $("#sidebar").toggleClass("active");
+//                    $(".fa-align-left").toggleClass("fa-chevron-circle-right");
+//                })
+//            })
+
+// ==============================================
+//註冊系統
+
+
+
+const Email = document.querySelector('#Email')
+const PassWord = document.querySelector('#PassWord')
+const C_PassWord = document.querySelector('#C_PassWord')
+const btnRes = document.querySelector('#REGISTER')
+
+btnRes.addEventListener('click', function(){
+    console.log('Email', Email.value);
+    // console.log('PassWord', PassWord.value);
+    console.log('C_PassWord', C_PassWord.value);
+    
+    fetch(`http://127.0.0.1:5000/register`, {method:'POST', body: JSON.stringify({Email:Email.value,PassWord:PassWord.value,C_PassWord:C_PassWord.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            console.log('welcome',data['Email'], data['C_PassWord'])
+        });
+})
+
+
+    </script>
+
+</body>
+</html>

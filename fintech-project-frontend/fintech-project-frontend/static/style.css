@@ -469,10 +469,6 @@ img{
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   row-gap: 2rem;
 }
-.iframe{
-  height: 30px;
-  width: 30px;
-}
 
 .footer__logo{
   font-size: var(--h3-font-size);

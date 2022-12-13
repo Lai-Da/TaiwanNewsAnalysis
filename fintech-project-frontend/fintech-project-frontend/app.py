@@ -21,19 +21,6 @@ cursor = db.cursor()
 @app.route('/',methods=['GET'])
 def home():
     return render_template("./index.html")
-@app.route('/profolio',methods=['GET'])
-def profolio():
-    return render_template("./profolio.html")
-
-@app.route('/log_in', methods=['GET', 'POST'])
-def log_in():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'itri' or request.form['password'] != 'itri':
-            error = 'Invalid username or password. Please try again!'
-        else:
-            return redirect(url_for('main_page')) #return render_template('main_page.html')
-    return render_template('login.html', error=error)
 
 # @app.route('/login',methods=['GET'])
 # def loginPG():
