@@ -23,7 +23,8 @@ img{
 }
 /* idea section */
 .idea{
-    background-color: var(--BG);
+    position: relative;
+    top: 5rem;
     height: 70%;
     margin: 5%;
     border : solid#555555;
@@ -36,7 +37,7 @@ img{
 /* team section */
 .team{
     min-height: 100vh;
-    background-color: var(--BG);
+
     line-height: 1.5;
     padding:80px 0;
 }

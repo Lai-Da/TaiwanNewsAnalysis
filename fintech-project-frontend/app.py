@@ -20,10 +20,10 @@ cursor = db.cursor()
 
 @app.route('/',methods=['GET'])
 def home():
-    return render_template("./index.html")
+    return render_template("./home/index.html")
 @app.route('/profolio',methods=['GET'])
 def profolio():
-    return render_template("./profolio.html")
+    return render_template("./home/profolio.html")
 
 @app.route('/log_in', methods=['GET', 'POST'])
 def log_in():
@@ -33,68 +33,50 @@ def log_in():
             error = 'Invalid username or password. Please try again!'
         else:
             return redirect(url_for('main_page')) #return render_template('main_page.html')
-    return render_template('login.html', error=error)
+    return render_template('./home/login.html', error=error)
 
-# @app.route('/login',methods=['GET'])
-# def loginPG():
-#     return render_template("./login")
+# @app.route('/news',methods=['GET', "POST"])
+# def news():
+#     if request.method == 'GET':
+#         return render_template('news.html', product_list=product_list)
 
-# @app.route('/signup',methods=['GET'])
-# def reisterPG():
-#     return render_template("./register")
+#     if request.method == 'POST':
+#         cat_list = ['', 'OZWEEGO', 'Superstar', 'Stan', 'Smith', 'others', 'Retropy', 'Forum', 'Campus', 'Puffylette']
 
-# @app.route('/menu',methods=['GET'])
-# def menu():
-#     return jsonify(menuData)
+#         cursor = db.cursor()
+#         cllection_insert = """INSERT INTO `collection` VALUES (%s);"""
+#         # p_id = request.values.get('p_id') # 用 form 的方法
+#         # cursor.execute(cllection_insert, (p_id))
+#         try:
+#             cursor.execute(cllection_insert, (request.json["id"])) # 用 js 的方法
+#             db.commit()
+#         except:
+#             print('selection process')
 
-# @app.route('/login',methods=['GET'])
-# def loginGetAll():
-#     res = {"success":False, "info":"查詢失敗"} #先預設是錯的，等try裡面成功了，就會return出來
-#     try:
-#         sql = 'SELECT * FROM `users`'
-#         cursor.execute(sql)
+#         selection_sql = f"""SELECT `category`.`id`, `category`.`name`, `productid_imgurl`.`imgURL` FROM `category` 
+#                             INNER JOIN `productid_imgurl` ON `category`.`id` = `productid_imgurl`.`id`
+#                             WHERE `category`.`category` = '{request.values.get('c_id')}'"""
+#         cursor.execute(selection_sql)
 
+#         product_list1 = []
 #         if cursor.rowcount > 0:
-#             result = cursor.fetchall()
-#             res["success"] = True
-#             res["info"] = "查詢成功"
-#             res["result"] = result
-#         else:
-#             res["info"] = "查無資料"
-        
-#         db.commit()
+#             results = cursor.fetchall()
 
-#     except Exception as e:
-#         db.rollback() #再做一次
-#         res["info"] = f"SQL 執行失敗: {e}"
-    
-#     return jsonify(res)
+#             product_list1 = []
+#             for i in results:
+#                 ids = i[0]
+#                 # names = " ".join(re.findall("\w+\s+", i[2]))
+#                 names = i[1]
+#                 url = i[2]
+#                 product_list1.append({"id": ids, "name": names, "url": url})
 
-# @app.route('/login/<int:id>',methods=['DELETE'])
-# def delStudent(id):
-#     res = {"success":False, "info":"刪除失敗"} #先預設是錯的，等try裡面成功了，就會return出來
-#     try:
-#         sql = 'DELETE FROM `users` WHERE `s_id` = %s'
-#         cursor.execute(sql, (id))
+#         cursor.close()
+#         return render_template('product_page.html', product_list=product_list1)
+@app.route('/register',methods=['GET'])
+def register():
+    return render_template("./home/register.html")
 
-#         if cursor.rowcount > 0:
-#             res["success"] = True
-#             res["info"] = "刪除成功"
-#             res["result"] = id
-#         else:
-#             res["info"] = "查無資料"
-        
-#         db.commit()
 
-#     except Exception as e:
-#         db.rollback() #再做一次
-#         res["info"] = f"SQL 執行失敗:{e}"
-    
-#     return jsonify(res)
-
-@app.route('/registration',methods=['GET'])
-def page():
-    return render_template("./register.html")
 @app.route('/registration',methods=['POST'])
 def registration():
     res = {"success":False, "info":"註冊失敗"} #先預設是錯的，等try裡面成功了，就會return出來
@@ -106,6 +88,7 @@ def registration():
             res["info"] = "註冊成功"
             res["Username"] = request.json["Username"]
             res["Password"] = request.json["Password"]
+            return render_template("./admin/index.html")
         else:
             res["info"] = "新增失敗"
         
@@ -116,7 +99,7 @@ def registration():
         res["info"] = f"SQL 執行失敗:{e}"
     
     return jsonify(res)
-    # return render_template("index.html")
+
 
 
 
@@ -164,5 +147,5 @@ def registration():
 #         res["info"] = f"SQL 執行失敗:{e}"
     
 #     return jsonify(res)
-app.debug=False
+app.debug=True
 app.run()

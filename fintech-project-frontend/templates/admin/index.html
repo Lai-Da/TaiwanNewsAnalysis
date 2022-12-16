@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FintechAI-project-home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+  href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
+<body>
+   <header class="l-header" id="header">
+      <nav class="nav bd-container">
+        <a href="#" class="nav__logo">賴打財經新聞報</a>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="{{url_for('home')}}" class="nav__link">首頁</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
+            </li>
+            <li class="nav__item">
+              <a href="{{url_for('home')}}" class="nav__link">財經新聞</a>
+            </li>
+            <li class="nav__item">
+               <a href="#services" class="nav__link">我的收藏</a>
+             </li>
+            <li class="nav__item">
+              <a href="{{url_for('log_in')}}" class="nav__link">登入</a>
+            </li>
+
+            <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+          </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="bx bx-menu"></i>
+        </div>
+      </nav>
+    </header>
+
+      <!--========== MENU ==========-->
+      <section class="menu section bd-container" id="menu">
+         <h2 class="section-title">新聞收錄總攬</h2>
+         <span class="section-subtitle">News of the collection</span>
+
+ 
+         <div class="menu__container bd-grid">
+           <div class="menu__content">
+             <img src="../../static/img/Liberty Times.jfif" alt="" class="menu__img" />
+             <h3 class="menu__name">自由時報</h3>
+             <span class="menu__detail">Liberty Times</span>
+             <!-- <span class="menu__preci"></span> -->
+             <a href="https://www.ltn.com.tw/" class="button menu__button"
+               ><i class="fa-solid fa-right-long"></i></a>
+           </div>
+ 
+           <div class="menu__content">
+             <img src="../../static/img/bf5d351dbd024b1ba980b6c5098c5660.jpg" alt="" class="menu__img" />
+             <h3 class="menu__name">鉅亨網</h3>
+             <span class="menu__detail">ANUE News</span>
+             <!-- <span class="menu__preci">$12.00</span> -->
+             <a href="https://news.cnyes.com/news/cat/headline" class="button menu__button"
+               ><i class="fa-solid fa-right-long"></i></a>
+           </div>
+
+           <div class="menu__content">
+            <img src="../../static/img/yahoo news.png" alt="" class="menu__img" />
+            <h3 class="menu__name">Yahoo奇摩新聞</h3>
+            <span class="menu__detail">Yahoo News</span>
+            <!-- <span class="menu__preci"></span> -->
+            <a href="https://tw.news.yahoo.com/" class="button menu__button"
+              ><i class="fa-solid fa-right-long"></i></a>
+          </div>
+          <div class="menu__content">
+            <img src="../../static/img/chinese.jfif" alt="" class="menu__img" />
+            <h3 class="menu__name">中國時報</h3>
+            <span class="menu__detail">China Times Incorporated</span>
+            <!-- <span class="menu__preci">$9.50</span> -->
+            <a href="https://www.chinatimes.com/?chdtv" class="button menu__button"
+              ><i class="fa-solid fa-right-long"></i></a>
+          </div>
+
+         <div class="menu__content">
+           <img src="../../static/img/commercial times.png" alt="" class="menu__img" />
+           <h3 class="menu__name">工商時報</h3>
+           <span class="menu__detail">Commercial Times</span>
+           <!-- <span class="menu__preci">$12.00</span> -->
+           <a href="https://ctee.com.tw/" class="button menu__button"
+             ><i class="fa-solid fa-right-long"></i></a>
+         </div>
+
+         </div>
+         <div class="menu__container bd-grid">
+
+
+  
+
+          </div>
+       </section>
+
+
+ <!-- ==========================footer============ -->
+ <footer class="footer section bd-container">
+   <div class="footer__container bd-grid">
+
+
+     <div class="footer__content">
+       <h3 class="footer__title">快速連結</h3>
+       <ul>
+         <li><a href="../../templates/index.html" class="footer__link">首頁</a></li>
+          <li><a href="../../templates/profolio.html" class="footer__link">關於我們</a></li>
+          <li><a href="../../templates/profolio.html" class="footer__link">我的收藏</a></li>
+          <li><a href="../../templates/profolio.html" class="footer__link">登入</a></li>
+       </ul>
+     </div>
+
+
+
+     <div class="footer__content">
+       <h3 class="footer__title">地理位置</h3>
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115687.73633497348!2d121.47363185395893!3d25.025868290442194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a98c743d3bb5%3A0x93fb4e641c4e5ed6!2z5bel56CU6Zmi55Si5qWt5Lq65omN6KiT57e05LiA6YOoLeWPsOWMlyAo5Y-w5YyX5a2457-S5Lit5b-DKQ!5e0!3m2!1sen!2stw!4v1670309831994!5m2!1sen!2stw" width="200px" height="150px" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     </div>
+
+     <div class="footer__content">
+      <h3 class="footer__title">聯絡我們</h3>
+      <!-- <span class="footer__description">Restaurant</span> -->
+      <ul>
+         <li>&nbsp</li>
+         <li>電話號碼:09xx-xxx-xxx</li>
+         <li>&nbsp</li>
+       </ul>
+      <div>
+         
+         <a href="#" class="footer__social"
+          ><i class="fa-brands fa-square-facebook"></i></a>
+         <a href="#" class="footer__social"
+          ><i class="fa-brands fa-instagram"></i></a>
+         <a href="#" class="footer__social"
+          ><i class="fa-brands fa-line"></i></a>
+          <a href="#" class="footer__social"
+          ><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+   </div>
+
+   
+   <p class="footer__copy">&#169; &nbsp&nbspITRI Fintech AI Project-Group2</p>
+ </footer>
+
+
+ 
+<!-- javascript  -->
+<script src="../../static/main.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script defer src="https://use.fontawesome.com/
+releases/v5.0.0/js/all.js"></script>
+</body>
+</html>

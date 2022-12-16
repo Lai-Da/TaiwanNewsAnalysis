@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FintechAI-project-home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../static/style.css">
+  <link rel="stylesheet" href="../../static/profolio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+  href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+  rel="stylesheet"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
+</head>
+<body>
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+      <a href="#" class="nav__logo">賴打財經新聞報</a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="{{url_for('home')}}" class="nav__link">首頁</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
+          </li>
+          <li class="nav__item">
+            <a href="#services" class="nav__link">財經新聞</a>
+          </li>
+          <li class="nav__item">
+             <a href="#services" class="nav__link">我的收藏</a>
+           </li>
+          <li class="nav__item">
+            <a href="{{url_for('log_in')}}" class="nav__link">登入</a>
+          </li>
+
+          <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </nav>
+  </header>
+<!-- main -->
+<section class="idea">
+   <h1>專案理念</h1>
+   <span> <br>&nbsp  &nbsp &nbsp&nbsp過去幾十年，人們獲取資訊的手段有限，但是從資訊產業蓬勃發展以來，人人手上都有一台手機，並且能更輕易的連上網路獲得資訊，反而面臨資訊過多的問題。近年來更出現假訊息、假新聞，人們要比從前還要謹慎地判讀、分析資訊。但是在瞬息萬變投資交易市場，相差一點點的時間都可能失去獲利的機會，更甚者導致嚴重的虧損。因此快速的判讀資訊的能力對於投資人是非常重要的，而TNA就是您最好的幫手。<br><br>
+
+    &nbsp &nbsp &nbsp &nbspTNA專門分析財經新聞，新聞的來源是五大網路新聞網(Yahoo!、工商時報、自由時報、中國時報、鉅亨網)的即時財經新聞，應用機器學習中的自然語言處理(NLP)，採用Google提出的BERT技術，預測新聞會對台股加權指數造成多大程度的影響，並且提供使用者會造成大波動的新聞。<br><br>
+    
+    &nbsp &nbsp &nbsp &nbsp使用TNA可以隨時獲得最新、最重要的情報，並且可以設定產業、挑選投資領域，TNA能提供更合乎需求的資訊，而在將來，TNA不只能分析台股加權指數，還能預測那斯達克指數、道瓊指數、日經指數等，TNA絕對是您可以信賴的好幫手。<br><br></span>
+</section>
+<section class="team">
+    <div class="container">
+      <div class="row">
+        <div class="team-item">
+          <div class="img-box">
+            <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
+            <div class="social-links">
+              <a href="#">facebook</a>
+              <a href="#">twitter</a>
+              <a href="#">instagram</a>
+              <a href="#">youtube</a>
+            </div>
+          </div>
+          <h3>吳直諺</h3>
+          <p>#工作內容</p>
+        </div>
+        <div class="team-item">
+          <div class="img-box">
+            <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
+            <div class="social-links">
+              <a href="#">facebook</a>
+              <a href="#">twitter</a>
+              <a href="#">instagram</a>
+              <a href="#">youtube</a>
+            </div>
+          </div>
+          <h3>賴遠杰</h3>
+          <p>#工作內容</p>
+        </div>
+        <div class="team-item">
+          <div class="img-box">
+            <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
+            <div class="social-links">
+              <a href="#">facebook</a>
+              <a href="#">twitter</a>
+              <a href="#">instagram</a>
+              <a href="#">youtube</a>
+            </div>
+          </div>
+          <h3>黃威捷</h3>
+          <p>#工作內容</p>
+        </div>
+      </div>
+      <div class="row">
+         <!-- <div class="team-item">
+           <div class="img-box">
+             <img src="img/1.jpg" alt="team img">
+             <div class="social-links">
+               <a href="#">facebook</a>
+               <a href="#">twitter</a>
+               <a href="#">instagram</a>
+               <a href="#">youtube</a>
+             </div>
+           </div>
+           <h3>sonu singh</h3>
+           <p>web developer</p>
+         </div> -->
+         <div class="team-item">
+           <div class="img-box">
+             <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
+             <div class="social-links">
+               <a href="#">facebook</a>
+               <a href="#">twitter</a>
+               <a href="#">instagram</a>
+               <a href="#">youtube</a>
+             </div>
+           </div>
+           <h3>曾璟程</h3>
+           <p>#工作內容</p>
+         </div>
+         <div class="team-item">
+           <div class="img-box">
+             <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
+             <div class="social-links">
+               <a href="#">facebook</a>
+               <a href="#">twitter</a>
+               <a href="#">instagram</a>
+               <a href="#">youtube</a>
+             </div>
+           </div>
+           <h3>呂文傑</h3>
+           <p>#工作內容</p>
+         </div>
+       </div>
+    </div>
+  </section>
+
+
+ <!-- footer -->
+ <footer class="footer section bd-container">
+  <div class="footer__container bd-grid">
+
+
+    <div class="footer__content">
+      <h3 class="footer__title">快速連結</h3>
+      <ul>
+        <li><a href="../../templates/index.html" class="footer__link">首頁</a></li>
+         <li><a href="../../templates/profolio.html" class="footer__link">關於我們</a></li>
+         <li><a href="../../templates/profolio.html" class="footer__link">我的收藏</a></li>
+         <li><a href="../../templates/profolio.html" class="footer__link">登入</a></li>
+      </ul>
+    </div>
+
+
+
+    <div class="footer__content">
+      <h3 class="footer__title">地理位置</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115687.73633497348!2d121.47363185395893!3d25.025868290442194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a98c743d3bb5%3A0x93fb4e641c4e5ed6!2z5bel56CU6Zmi55Si5qWt5Lq65omN6KiT57e05LiA6YOoLeWPsOWMlyAo5Y-w5YyX5a2457-S5Lit5b-DKQ!5e0!3m2!1sen!2stw!4v1670309831994!5m2!1sen!2stw" width="200px" height="150px" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="footer__content">
+     <h3 class="footer__title">聯絡我們</h3>
+     <!-- <span class="footer__description">Restaurant</span> -->
+     <ul>
+        <li>&nbsp</li>
+        <li>電話號碼:09xx-xxx-xxx</li>
+        <li>&nbsp</li>
+      </ul>
+     <div>
+        
+        <a href="#" class="footer__social"
+         ><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#" class="footer__social"
+         ><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="footer__social"
+         ><i class="fa-brands fa-line"></i></a>
+         <a href="#" class="footer__social"
+         ><i class="fa-brands fa-github"></i></a>
+     </div>
+   </div>
+  </div>
+
+  
+  <p class="footer__copy">&#169; &nbsp&nbspITRI Fintech AI Project-Group2</p>
+</footer>
+
+
+
+
+
+ 
+<!-- javascript  -->
+<script src="../../static/main.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script defer src="https://use.fontawesome.com/
+releases/v5.0.0/js/all.js"></script>
+</body>
+</html>
