@@ -1,0 +1,18 @@
+.selection{
+    height: 100px;
+    top:300px;
+}
+.product{
+    left: 2000px;
+    /* background-color: aliceblue; */
+}
+.product table{
+    margin: auto;
+    border: solid white;
+}
+.product table tr td{
+    width: calc(100%+70px);
+    border-top: solid white;
+    margin: 10px;
+    padding: 10px;
+}
