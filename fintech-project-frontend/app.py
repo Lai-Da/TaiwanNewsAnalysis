@@ -12,18 +12,41 @@ db = pymysql.connect(
     port=3306,
     user='root',
     passwd = '',
-    database='login',
+    database='taiwannewsanalysis',
     charset='utf8mb4'
 )
 
 cursor = db.cursor()
+cursor.execute('SELECT * FROM `ctee_data1129_1201`')
+
+if cursor.rowcount > 0:
+    results = cursor.fetchall()
+
+    news_list = []
+    for i in results:
+        time = i[0]
+        title = i[1]
+        url = i[2]
+        text = i[3]
+        src = i[4]
+        news_list.append({"time": time, "title": title, "url": url, "text": text, "src": src})
+# cursor.close()
+
 
 @app.route('/',methods=['GET'])
 def home():
-    return render_template("./index.html")
+    return render_template("./home/index.html")
+
 @app.route('/profolio',methods=['GET'])
 def profolio():
-    return render_template("./profolio.html")
+    return render_template("./home/profolio.html")
+
+@app.route('/news',methods=['GET', "POST"])
+def news():
+    if request.method == 'GET':
+        return render_template('./home/news.html', news_list=news_list)
+
+
 
 @app.route('/log_in', methods=['GET', 'POST'])
 def log_in():
@@ -33,68 +56,13 @@ def log_in():
             error = 'Invalid username or password. Please try again!'
         else:
             return redirect(url_for('main_page')) #return render_template('main_page.html')
-    return render_template('login.html', error=error)
+    return render_template('./home/login.html', error=error)
 
-# @app.route('/login',methods=['GET'])
-# def loginPG():
-#     return render_template("./login")
+@app.route('/register',methods=['GET'])
+def register():
+    return render_template("./home/register.html")
 
-# @app.route('/signup',methods=['GET'])
-# def reisterPG():
-#     return render_template("./register")
 
-# @app.route('/menu',methods=['GET'])
-# def menu():
-#     return jsonify(menuData)
-
-# @app.route('/login',methods=['GET'])
-# def loginGetAll():
-#     res = {"success":False, "info":"查詢失敗"} #先預設是錯的，等try裡面成功了，就會return出來
-#     try:
-#         sql = 'SELECT * FROM `users`'
-#         cursor.execute(sql)
-
-#         if cursor.rowcount > 0:
-#             result = cursor.fetchall()
-#             res["success"] = True
-#             res["info"] = "查詢成功"
-#             res["result"] = result
-#         else:
-#             res["info"] = "查無資料"
-        
-#         db.commit()
-
-#     except Exception as e:
-#         db.rollback() #再做一次
-#         res["info"] = f"SQL 執行失敗: {e}"
-    
-#     return jsonify(res)
-
-# @app.route('/login/<int:id>',methods=['DELETE'])
-# def delStudent(id):
-#     res = {"success":False, "info":"刪除失敗"} #先預設是錯的，等try裡面成功了，就會return出來
-#     try:
-#         sql = 'DELETE FROM `users` WHERE `s_id` = %s'
-#         cursor.execute(sql, (id))
-
-#         if cursor.rowcount > 0:
-#             res["success"] = True
-#             res["info"] = "刪除成功"
-#             res["result"] = id
-#         else:
-#             res["info"] = "查無資料"
-        
-#         db.commit()
-
-#     except Exception as e:
-#         db.rollback() #再做一次
-#         res["info"] = f"SQL 執行失敗:{e}"
-    
-#     return jsonify(res)
-
-@app.route('/registration',methods=['GET'])
-def page():
-    return render_template("./register.html")
 @app.route('/registration',methods=['POST'])
 def registration():
     res = {"success":False, "info":"註冊失敗"} #先預設是錯的，等try裡面成功了，就會return出來
@@ -106,6 +74,7 @@ def registration():
             res["info"] = "註冊成功"
             res["Username"] = request.json["Username"]
             res["Password"] = request.json["Password"]
+            # return render_template("./admin/index.html")
         else:
             res["info"] = "新增失敗"
         
@@ -116,7 +85,7 @@ def registration():
         res["info"] = f"SQL 執行失敗:{e}"
     
     return jsonify(res)
-    # return render_template("index.html")
+
 
 
 
@@ -164,5 +133,6 @@ def registration():
 #         res["info"] = f"SQL 執行失敗:{e}"
     
 #     return jsonify(res)
-app.debug=False
-app.run()
+if __name__ == '__main__':
+    app.debug=True
+    app.run()
