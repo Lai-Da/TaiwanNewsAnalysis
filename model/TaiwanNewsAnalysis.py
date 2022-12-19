@@ -228,7 +228,6 @@ model = model.to(device)
 _, acc = get_predictions(model, trainloader, compute_acc=True)
 print("classification acc:", acc)
 
-%% time
 # 訓練模式
 model.train()
 
@@ -266,7 +265,6 @@ for epoch in range(EPOCHS):
     print('[epoch %d] loss: %.3f, acc: %.3f' %
           (epoch + 1, running_loss, acc))
 
-%% time
 # 建立測試集。
 testset = TWNewsDataset("test_twnews", tokenizer=tokenizer)
 BATCH_SIZE = 64
