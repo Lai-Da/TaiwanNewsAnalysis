@@ -91,7 +91,23 @@
 <body>
 	<div class="box">
 		<h3>登入</h3>
-			<div class="form-group">
+        <form action = "log_in" method = "post">
+            <div class="textfield">
+                <label>Username</label>
+                <input type=text name=username placeholder="Username" class="form-control"  value = "{{request.form.username}}">
+            </div>
+            <div class="textfield">
+                <label>Password</label>
+                <input type=password name=password placeholder="Password" class="form-control"  value = "{{request.form.password}}">
+            </div>
+            {% if error %}
+                <p><strong>Error:</strong> {{ error }}</p>
+            {% endif %}
+            <div>
+                <input class="btnlogin" type = submit value = Login id = "login_btn">
+            </div>
+        </form>
+			<!-- <div class="form-group">
 				<input type="text" class="form-control" placeholder="Your Email " value="" />
 			</div>
 			<div class="form-group">
@@ -102,9 +118,23 @@
 				<a href="#" class="ForgetPwd">| 忘記密碼</a>
 			</div>
 			<div class="form-group">
-				<a href="{{url_for('register')}}" class="ForgetPwd">註冊帳號</a>
-			</div>
+				<a href="{{url_for('register')}}" class="ForgetPwd" id="LOGIN">註冊帳號</a>
+			</div> -->
 		</div>
+<script>
+            const btnLogin = document.querySelector('#LOGIN')
 
+btnLogin.addEventListener('click', function(){
+    console.log('name', name.value);
+    console.log('nickname', nickname.value);
+    
+    fetch(`http://127.0.0.1:5000/login`, {method:'POST', body: JSON.stringify({name:name.value, nickname:nickname.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            alert('welcome back',data['name'], data['nickname'])
+        });
+})
+</script>
 </body>
 </html>

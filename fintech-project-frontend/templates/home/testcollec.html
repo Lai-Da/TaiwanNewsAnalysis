@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collection Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'collection_style.css')}}">
+</head>
+<body>
+    <!-- <div class="header">
+        <div class="box_logo">
+            <img src="{{url_for('static', filename = 'colour logo.png')}}" alt="" id="logo">
+            <p id="BrandName">Colour Me</p>
+        </div>
+        <div class="box_icon"><a href="{{url_for('main_page')}}"><img src="{{url_for('static', filename = 'home.png')}}" alt="" id="search_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('product_page')}}"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('collection_page')}}"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a></div>
+        <div class="box_icon"><a href="{{url_for('home_page')}}"><img src="{{url_for('static', filename = 'exit.png')}}" alt="" id="exit_icon"></a></div>
+    </div> -->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+          <img src="{{url_for('static', filename = 'colourme logo small.png')}}" alt="" class="nav_photo">
+
+          <div style="display: block;"></div>
+          <a href="" class="nav_logo">colour me</a>
+ 
+          <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list">
+                <li class="nav_item">
+                    <a href="{{url_for('main_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'home.png')}}" alt="" id="home_icon"></a>
+                </li>
+                <li class="nav_item">
+                    <a href="{{url_for('product_page')}}" class="nav_link active-link"><img src="{{url_for('static', filename = 'shoes.png')}}" alt="" id="product_icon"></a>
+                </li>
+                <li class="nav_item">
+                    <a href="{{url_for('collection_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'collect_icon.png')}}" alt="" id="collect_icon"></a>
+                </li>
+                <li class="nav_item">
+                    <a href="{{url_for('home_page')}}" class="nav_link"><img src="{{url_for('static', filename = 'user_icon.png')}}" alt="" id="user_icon"></a>
+                </li>
+            </ul>
+          </div>
+  
+          <div class="nav_toggle" id="nav-toggle">
+            <iconify-icon icon="bx:menu"></iconify-icon>
+          </div>
+        </nav>
+    </header><br><br><br><br>
+    <div class="product">
+        <div class="caption"><strong>收藏鞋款</strong></div>
+        <table>
+            <tr>
+                <th class="a">代號</th>
+                <th class="b">品名</th>
+                <th class="c">圖片</th>
+                <th class="d">取消</th>
+            </tr>
+            {% for i in collection_list %}
+                <tr>
+                    <td class="a">{{i['id']}}</td>
+                    <td class="b">{{i['name']}}</td>
+                    <td class="c"><img src="{{i['url']}}" alt="" class="image"></td>
+                    <td class="d">
+                        <form action="collection_page" method="post">
+                            <input type="text" value="{{i['id']}}" name="p_id" class="p_id">
+                            <input type="submit" class="collection" value="&#10008">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="footer">
+        <div class="footer_box">
+            <div class="footer_logo">
+                <img src="{{url_for('static',filename = 'colourme logo small.png')}}">
+            </div>
+        </div>
+        <div class="footer_sections">
+            <div class="footer_sec1">
+                <p>日期： 週一至週五<br>電話： (02)-2737-7300<br>時間： 9 AM ~ 12 PM ／ 1 PM ~ 5:30 PM<br>地址： 台北市大安區復興南路二段237號4樓</p>
+            </div>
+            <div class="footer_sec2">
+                <img src="{{url_for('static',filename = 'Line@_add.png')}}" width="250px" height="100px" class="sec2_img">
+                <img src="{{url_for('static', filename = 'Linebot QRcode.png')}}" width="150px" height="150px" id="line_code">
+            </div>
+            <div class="footer_sec3">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115687.73633497348!2d121.47363185395893!3d25.025868290442194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a98c743d3bb5%3A0x93fb4e641c4e5ed6!2z5bel56CU6Zmi55Si5qWt5Lq65omN6KiT57e05LiA6YOoLeWPsOWMlyAo5Y-w5YyX5a2457-S5Lit5b-DKQ!5e0!3m2!1sen!2stw!4v1670309831994!5m2!1sen!2stw" width="300" height="250" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

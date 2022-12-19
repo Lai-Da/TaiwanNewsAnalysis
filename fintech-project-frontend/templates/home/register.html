@@ -178,47 +178,107 @@ body{
 	<div class="box">
 		<h3>註冊</h3>
 			<div class="form-group">
-				<input type="text" id="Username"class="form-control" placeholder="設定使用者名稱" value="" />
+				<input type="text" id="name"class="form-control" placeholder="設定使用者名稱" value="" />
 			</div>
             <div class="form-group">
-				<input type="text" id="Email" class="form-control" placeholder="您的電子信箱 " value="" />
+				<input type="text" id="gender" class="form-control" placeholder="您的電子信箱 " value="" />
 			</div>
 			<div class="form-group">
-				<input type="password" id="Password" class="form-control" placeholder="您的密碼" value="" />
+				<input type="password" id="nickname" class="form-control" placeholder="您的密碼" value="" />
 			</div>
 			<div class="form-group">
 				<input type="submit"  id="REGISTER" class="btnSubmit" value="註冊" />
-                <div class="popup" id="succes">
-                    <div class="popup-content">
-                      <div class="imgbox">
-                        <img src="checked.png" alt="" class="img">
-                      </div>
-                      <div class="title">
-                        <h3>Success!</h3>
-                      </div>
-                      <p class="para">Your account has been created successfully</p>
-                      <form action="">
-                        <a href="#" class="button" id="s_button">OKAY</a>
-                      </form>
-                    </div>
-                  </div>				
 
 			</div>
 			<div class="form-group">
 				<span>已有帳號 <a href="#" class="ForgetPwd">直接登入</a></span>
 			</div>
 		</div>
-<script>
+
+
+        <script>
+            const btnGet = document.querySelector('#GET')
+    
+            btnGet.addEventListener('click', function(){
+                fetch('http://127.0.0.1:5000/school')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // if(data.success){
+                            // if(data.result.length > 0){
+                                // loop
+                                // for (let i = 0; i < data.result.length; i++) {data.result;}
+                            // }
+                        // }
+                        console.log(data);
+                        console.log(data['result'])});
+            })
+    
+            const delID = document.querySelector('#delID')
+    
+            const btnDel = document.querySelector('#DELETE')
+            btnDel.addEventListener('click', function(){
+                console.log('delID:', delID.value);
+                // fetch('http://127.0.0.1:5000/school/'+delID.value)
+                fetch(`http://127.0.0.1:5000/school/${delID.value}`, {method:'DELETE'}) //後端怎寫，這裡就要怎寫
+                    .then((response) => response.json())
+                    .then((data) => console.log('delete ID:',data['result']));
+            })
+    
+            const name = document.querySelector('#name')
+            const gender = document.querySelector('#gender')
+            const nickname = document.querySelector('#nickname')
+            const btnRes = document.querySelector('#REGISTER')
+    
+            btnRes.addEventListener('click', function(){
+                console.log('name', name.value);
+                console.log('gender', gender.value);
+                console.log('nickname', nickname.value);
+                
+                fetch(`http://127.0.0.1:5000/newStudent`, {method:'POST', body: JSON.stringify({name:name.value, gender:gender.value, nickname:nickname.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data)
+                        console.log('welcome',data['name'], data['nickname'])
+                    });
+            })
+    
+            const btnLogin = document.querySelector('#LOGIN')
+    
+            btnLogin.addEventListener('click', function(){
+                console.log('name', name.value);
+                console.log('nickname', nickname.value);
+                
+                fetch(`http://127.0.0.1:5000/login`, {method:'POST', body: JSON.stringify({name:name.value, nickname:nickname.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data)
+                        console.log('welcome back',data['name'], data['nickname'])
+                    });
+            })
+    
+            const btnUpdate = document.querySelector('#UPDATE')
+            const IDID = document.querySelector('#IDID')
+    
+            btnUpdate.addEventListener('click', function(){
+                console.log('name', name.value);
+                console.log('nickname', nickname.value);
+                console.log('id', IDID.value);
+                
+                fetch(`http://127.0.0.1:5000/update/${IDID.value}`, {method:'PUT', body: JSON.stringify({id:IDID.value, name:name.value, nickname:nickname.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data)
+                        console.log('update ID as',data['id'])
+                    });
+            })
+    
+        </script>
+<!-- <script>
     // ==============================================
 //註冊系統
 
 // =====================================================
-// var success_popup=document.getElementById("succes");
-// var s_btn =document.querySelector('.btnSubmit');
 
-// s_btn.onclick=function(){
-//     success_popup.style.display ="block";
-// }
 
 const Username = document.querySelector('#Username')
 const Email = document.querySelector('#Email')
@@ -237,7 +297,7 @@ btnRes.addEventListener('click', function(){
             console.log('welcome',data['Username'])
         });
 })
-</script>
+</script> -->
 
 </body>
 </html>

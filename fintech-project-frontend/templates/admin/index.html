@@ -13,27 +13,34 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
 <body>
-   <header class="l-header" id="header">
-      <nav class="nav bd-container">
-        <a href="#" class="nav__logo">賴打財經新聞報</a>
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+      <a href="#" class="nav__logo">賴打財經新聞報</a>
 
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="{{url_for('home')}}" class="nav__link">首頁</a>
-            </li>
-            <li class="nav__item">
-              <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
-            </li>
-            <li class="nav__item">
-              <a href="{{url_for('home')}}" class="nav__link">財經新聞</a>
-            </li>
-            <li class="nav__item">
-               <a href="#services" class="nav__link">我的收藏</a>
-             </li>
-            <li class="nav__item">
-              <a href="{{url_for('log_in')}}" class="nav__link">登入</a>
-            </li>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="{{url_for('adminhome')}}" class="nav__link">首頁</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('news')}}" class="nav__link">財經新聞</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('home')}}" class="nav__link">登出</a>
+          </li>
+
+          <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </nav>
+  </header>
 
             <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
           </ul>
@@ -114,10 +121,9 @@
      <div class="footer__content">
        <h3 class="footer__title">快速連結</h3>
        <ul>
-         <li><a href="../../templates/index.html" class="footer__link">首頁</a></li>
-          <li><a href="../../templates/profolio.html" class="footer__link">關於我們</a></li>
-          <li><a href="../../templates/profolio.html" class="footer__link">我的收藏</a></li>
-          <li><a href="../../templates/profolio.html" class="footer__link">登入</a></li>
+        <li><a href="{{url_for('adminhome')}}" class="footer__link">首頁</a></li>
+        <li><a href="{{url_for('profolio')}}" class="footer__link">關於我們</a></li>
+        <li><a href="{{url_for('news')}}" class="footer__link">財經新聞</a></li>
        </ul>
      </div>
 

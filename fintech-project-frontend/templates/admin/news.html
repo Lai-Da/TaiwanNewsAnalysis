@@ -14,55 +14,50 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
 <body>
-   <header class="l-header" id="header">
-      <nav class="nav bd-container">
-        <a href="#" class="nav__logo">賴打財經新聞報</a>
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+      <a href="#" class="nav__logo">賴打財經新聞報</a>
 
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="{{url_for('home')}}" class="nav__link">首頁</a>
-            </li>
-            <li class="nav__item">
-              <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
-            </li>
-            <li class="nav__item">
-              <a href="{{url_for('news')}}" class="nav__link">財經新聞</a>
-            </li>
-            <li class="nav__item">
-               <a href="#services" class="nav__link">我的收藏</a>
-             </li>
-            <li class="nav__item">
-              <a href="{{url_for('log_in')}}" class="nav__link">登入</a>
-            </li>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="{{url_for('adminhome')}}" class="nav__link">首頁</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('news')}}" class="nav__link">財經新聞</a>
+          </li>
+          <li class="nav__item">
+            <a href="{{url_for('home')}}" class="nav__link">登出</a>
+          </li>
 
-            <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
-          </ul>
-        </div>
+          <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+        </ul>
+      </div>
 
-        <div class="nav__toggle" id="nav-toggle">
-          <i class="bx bx-menu"></i>
-        </div>
-      </nav>
-    </header>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </nav>
+  </header>
 
       <!--========== Section ==========-->
+      <div style="height: 5rem;"></div>
 	  <div class="selection">
-        <!-- <form action="product_page" method="post">
+        <form action="news" method="post">
             <label for="" class="sel_lab"></label>
             <select name="c_id" id="" class="sel_sel">
                 <option value="" disabled></option>
-                <option value="Campus">Campus</option>
-                <option value="Forum">Forum</option>
-                <option value="OZWEEGO">Ozweego</option>
-                <option value="Others">Others</option>
-                <option value="Puffylette">Puffylette</option>
-                <option value="Retropy">Retropy</option>
-                <option value="Stan Smith">Stan Smith</option>
-                <option value="Superstar">Superstar</option>
+                <option value="up">上漲</option>
+                <option value="down">下跌
+                </option>
+                <option value="unchange">不變</option>
+
             </select>
             <input type="submit" class="sel_sub" value="送出">
-        </form>     -->
+        </form>    
 
     </div>
     <div class="product">
@@ -78,9 +73,14 @@
                     <td class="a">{{i['time']}}</td>
                     <td class="b">{{i['title']}}</td>
                     <td class="b"><a href="{{i['url']}}">{{i['url']}}</a></td>
-                    <td class="b">{{i['']}}</td>
-<a href=""></a>
-        
+
+                    <td class="b">{{i['category']}}</td>
+                    <!-- <td class="d">
+                      <form action="product_page" method="post">
+                          <input type="text" value="{{i['title']}}" name="p_id" class="p_id">
+                          <input type="submit" class="collection" value="&#10084">
+                      </form>
+                  </td> -->
                 </tr>
             {% endfor %}
           </table>
@@ -93,10 +93,9 @@
      <div class="footer__content">
        <h3 class="footer__title">快速連結</h3>
        <ul>
-         <li><a href="../templates/index.html" class="footer__link">首頁</a></li>
-          <li><a href="../templates/profolio.html" class="footer__link">關於我們</a></li>
-          <li><a href="../templates/profolio.html" class="footer__link">我的收藏</a></li>
-          <li><a href="../templates/profolio.html" class="footer__link">登入</a></li>
+        <li><a href="{{url_for('adminhome')}}" class="footer__link">首頁</a></li>
+        <li><a href="{{url_for('profolio')}}" class="footer__link">關於我們</a></li>
+        <li><a href="{{url_for('news')}}" class="footer__link">財經新聞</a></li>
        </ul>
      </div>
 
@@ -140,5 +139,16 @@
 <script src="https://unpkg.com/scrollreveal"></script>
 <script defer src="https://use.fontawesome.com/
 releases/v5.0.0/js/all.js"></script>
+<script>
+  for (i=0; i< 50; i++){
+      let btn = document.querySelectorAll('.collection')[i]
+      let p_id = document.querySelectorAll('.p_id')[i]
+      btn.addEventListener('click', function(e) {
+          e.preventDefault()
+          fetch(`http://127.0.0.1:5000/news`, {method:'POST', body: JSON.stringify({id:p_id.value}), headers:{'content-type':'application/json'}}) //後端怎寫，這裡就要怎寫, stringify轉字串
+          .then((response) => response.json())
+      });
+  }
+</script>
 </body>
 </html>

@@ -28,11 +28,8 @@
               <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
             </li>
             <li class="nav__item">
-              <a href="{{url_for('news')}}" class="nav__link">財經新聞</a>
+              <a href="{{url_for('log_in')}}" class="nav__link">財經新聞</a>
             </li>
-            <li class="nav__item">
-               <a href="#services" class="nav__link">我的收藏</a>
-             </li>
             <li class="nav__item">
               <a href="{{url_for('log_in')}}" class="nav__link">登入</a>
             </li>
@@ -116,10 +113,9 @@
      <div class="footer__content">
        <h3 class="footer__title">快速連結</h3>
        <ul>
-         <li><a href="../../templates/index.html" class="footer__link">首頁</a></li>
-          <li><a href="../../templates/profolio.html" class="footer__link">關於我們</a></li>
-          <li><a href="../../templates/profolio.html" class="footer__link">我的收藏</a></li>
-          <li><a href="../../templates/profolio.html" class="footer__link">登入</a></li>
+         <li><a href="{{url_for('home')}}" class="footer__link">首頁</a></li>
+          <li><a href="{{url_for('home')}}" class="footer__link">關於我們</a></li>
+          <li><a href="{{url_for('home')}}" class="footer__link">財經新聞</a></li>
        </ul>
      </div>
 

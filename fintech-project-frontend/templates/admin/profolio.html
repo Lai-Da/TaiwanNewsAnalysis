@@ -12,28 +12,23 @@
   rel="stylesheet"/>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
-</head>
-<body>
-  <header class="l-header" id="header">
+   <header class="l-header" id="header">
     <nav class="nav bd-container">
       <a href="#" class="nav__logo">賴打財經新聞報</a>
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="{{url_for('home')}}" class="nav__link">首頁</a>
+            <a href="{{url_for('adminhome')}}" class="nav__link">首頁</a>
           </li>
           <li class="nav__item">
             <a href="{{url_for('profolio')}}" class="nav__link">關於我們</a>
           </li>
           <li class="nav__item">
-            <a href="#services" class="nav__link">財經新聞</a>
+            <a href="{{url_for('news')}}" class="nav__link">財經新聞</a>
           </li>
           <li class="nav__item">
-             <a href="#services" class="nav__link">我的收藏</a>
-           </li>
-          <li class="nav__item">
-            <a href="{{url_for('log_in')}}" class="nav__link">登入</a>
+            <a href="{{url_for('home')}}" class="nav__link">登出</a>
           </li>
 
           <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
@@ -68,74 +63,46 @@
             </div>
           </div>
           <h3>吳直諺</h3>
-          <p>#工作內容</p>
+          <p>UI設計、網頁全站架設、API串接</p>
         </div>
         <div class="team-item">
           <div class="img-box">
             <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
             <div class="social-links">
-              <a href="#">facebook</a>
-              <a href="#">twitter</a>
-              <a href="#">instagram</a>
-              <a href="#">youtube</a>
             </div>
           </div>
           <h3>賴遠杰</h3>
-          <p>#工作內容</p>
+          <p>模型訓練</p>
         </div>
         <div class="team-item">
           <div class="img-box">
             <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
             <div class="social-links">
-              <a href="#">facebook</a>
-              <a href="#">twitter</a>
-              <a href="#">instagram</a>
-              <a href="#">youtube</a>
             </div>
           </div>
           <h3>黃威捷</h3>
-          <p>#工作內容</p>
+          <p>資料ETL</p>
         </div>
       </div>
       <div class="row">
-         <!-- <div class="team-item">
-           <div class="img-box">
-             <img src="img/1.jpg" alt="team img">
-             <div class="social-links">
-               <a href="#">facebook</a>
-               <a href="#">twitter</a>
-               <a href="#">instagram</a>
-               <a href="#">youtube</a>
-             </div>
-           </div>
-           <h3>sonu singh</h3>
-           <p>web developer</p>
-         </div> -->
          <div class="team-item">
            <div class="img-box">
              <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
              <div class="social-links">
-               <a href="#">facebook</a>
-               <a href="#">twitter</a>
-               <a href="#">instagram</a>
-               <a href="#">youtube</a>
+
              </div>
            </div>
            <h3>曾璟程</h3>
-           <p>#工作內容</p>
+           <p>LINEBot與雲端架設</p>
          </div>
          <div class="team-item">
            <div class="img-box">
              <img src="https://pic.616pic.com/ys_img/00/08/69/bW7OT55QAA.jpg" alt="team img">
              <div class="social-links">
-               <a href="#">facebook</a>
-               <a href="#">twitter</a>
-               <a href="#">instagram</a>
-               <a href="#">youtube</a>
              </div>
            </div>
            <h3>呂文傑</h3>
-           <p>#工作內容</p>
+           <p>資料ETL</p>
          </div>
        </div>
     </div>
@@ -150,10 +117,9 @@
     <div class="footer__content">
       <h3 class="footer__title">快速連結</h3>
       <ul>
-        <li><a href="../../templates/index.html" class="footer__link">首頁</a></li>
-         <li><a href="../../templates/profolio.html" class="footer__link">關於我們</a></li>
-         <li><a href="../../templates/profolio.html" class="footer__link">我的收藏</a></li>
-         <li><a href="../../templates/profolio.html" class="footer__link">登入</a></li>
+        <li><a href="{{url_for('adminhome')}}" class="footer__link">首頁</a></li>
+        <li><a href="{{url_for('profolio')}}" class="footer__link">關於我們</a></li>
+        <li><a href="{{url_for('news')}}" class="footer__link">財經新聞</a></li>
       </ul>
     </div>
 
